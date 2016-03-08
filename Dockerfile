@@ -20,7 +20,7 @@ RUN export REQ="nginx-light mysql-server php5-cli php5-fpm php5 \
        libresample-dev libc-client-dev binutils-dev libsrtp-dev libgsm1-dev libedit-dev doxygen libjansson-dev libldap-dev \
        libxslt1-dev" \
  && cp /etc/apt/sources.list /etc/apt/sources.list.bak \
- && set -i 's/httpredir/ftp.tw/' /etc/apt/sources.list \
+ && sed -i 's/httpredir/ftp.tw/' /etc/apt/sources.list \
  && set -x \
  && apt-get update \
  && echo 'mysql-server mysql-server/root_password password secret' | debconf-set-selections \
