@@ -27,7 +27,7 @@ RUN export REQ="nginx-light mysql-server php5-cli php5-fpm php5 \
  && echo 'mysql-server mysql-server/root_password_again password secret' | debconf-set-selections \
  && echo 'libvpb0 libvpb0/countrycode string 886' | debconf-set-selections \
  && apt-get install -y --no-install-recommends $REQ $DEP \
- && mv -f /etc/apt/sources.list.bak/etc/apt/sources.list \
+ && mv -f /etc/apt/sources.list.bak /etc/apt/sources.list \
  && mkdir /build \
  && mkdir /build/ast \
  && curl -sS http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz \
