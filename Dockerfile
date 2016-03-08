@@ -19,12 +19,15 @@ RUN export REQ="nginx-light mysql-server php5-cli php5-fpm php5 \
        libsnmp-dev libiksemel-dev libcorosync-dev libnewt-dev libpopt-dev libical-dev libspandsp-dev libjack-dev \
        libresample-dev libc-client-dev binutils-dev libsrtp-dev libgsm1-dev libedit-dev doxygen libjansson-dev libldap-dev \
        libxslt1-dev" \
+ && cp /etc/apt/sources.list /etc/apt/sources.list.bak \
+ && set -i 's/httpredir/ftp.tw/' /etc/apt/sources.list \
  && set -x \
  && apt-get update \
  && echo 'mysql-server mysql-server/root_password password secret' | debconf-set-selections \
  && echo 'mysql-server mysql-server/root_password_again password secret' | debconf-set-selections \
  && echo 'libvpb0 libvpb0/countrycode string 886' | debconf-set-selections \
  && apt-get install -y --no-install-recommends $REQ $DEP \
+ && mv -f /etc/apt/sources.list.bak/etc/apt/sources.list \
  && mkdir /build \
  && mkdir /build/ast \
  && curl -sS http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz \
