@@ -4,7 +4,7 @@ MAINTAINER Ronmi Ren <ronmi@patrolavia.com>
 # install dependencies
 RUN export REQ="nginx-light mysql-server php5-cli php5-fpm php5 \
        php5-curl php5-mysql php-pear php5-gd curl wget ca-certificates \
-       libmyodbc mpg123 sox uuid sudo vim-tiny anacron \
+       libmyodbc mpg123 sox uuid sudo vim-tiny cron \
        libiksemel3 libpjsua2 libjansson4 openssl lua5.1 \
        libnewt0.52 libsqlite3-0 libxslt1.1 libfreeradius-client2 libpq5 \
        libgmime-2.6-0 liblua5.1-0 libical1a libneon27 libsnmp30 libspandsp2 \
@@ -84,7 +84,7 @@ RUN mkdir -p /build/freepbx /var/lib/freepbx/cgi-bin /var/lib/freepbx/html \
  && rm -fr /build
 
 # setup env
-RUN ln -sf /etc/init.d/mysql /etc/init.d/nginx /etc/init.d/php5-fpm /etc/init.d/anacron /etc/ynit/
+RUN ln -sf /etc/init.d/mysql /etc/init.d/nginx /etc/init.d/php5-fpm /etc/init.d/cron /etc/ynit/
 ADD my.cnf /etc/mysql/
 ADD www.conf /etc/php5/fpm/pool.d/
 ADD nginx.conf /etc/nginx/
