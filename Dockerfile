@@ -79,12 +79,11 @@ RUN mkdir -p /build/freepbx /var/lib/freepbx/cgi-bin /var/lib/freepbx/html \
        /etc/asterisk/manager.d/admin.conf \
  && fwconsole ma upgradeall \
  && /etc/ynit/asterisk stop \
- && service mysql stop
-
-# setup env
-RUN ln -sf /etc/init.d/mysql /etc/init.d/nginx /etc/init.d/php5-fpm /etc/init.d/anacron /etc/ynit/ \
+ && service mysql stop \
  && rm -fr /build
 
+# setup env
+RUN ln -sf /etc/init.d/mysql /etc/init.d/nginx /etc/init.d/php5-fpm /etc/init.d/anacron /etc/ynit/
 ADD my.cnf /etc/mysql/
 ADD www.conf /etc/php5/fpm/pool.d/
 ADD nginx.conf /etc/nginx/
