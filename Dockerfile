@@ -80,8 +80,8 @@ RUN mkdir -p /build/freepbx /var/lib/freepbx/cgi-bin /var/lib/freepbx/html \
        --dbpass secret -f \
  && sed -i "s/amp111/$(cat /etc/amportal.conf |grep AMPMGRPASS|cut -d '=' -f 2)/" \
        /etc/asterisk/manager.d/admin.conf \
- && fwconsole ma upgradeall \
- && fwconsole set CHECKREFERER 0 \
+ && sudo -u asterisk fwconsole ma upgradeall \
+ && sudo -u asterisk fwconsole set CHECKREFERER 0 \
  && /etc/ynit/asterisk stop \
  && service mysql stop \
  && rm -fr /build
