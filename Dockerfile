@@ -92,4 +92,5 @@ ADD my.cnf /etc/mysql/
 ADD www.conf /etc/php5/fpm/pool.d/
 ADD nginx.conf /etc/nginx/
 
+VOLUME ["/var/spool/cron/crontabs", "/var/lib/mysql", "/var/lib/asterisk", "/var/lib/freepbx/html/admin", "/var/log/asterisk", "/var/log/nginx", "/var/log/mysql", "/var/spool/asterisk", "/etc/asterisk"]
 CMD ["ynit"]
